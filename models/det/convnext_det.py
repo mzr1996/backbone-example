@@ -2,10 +2,11 @@ from mmdet.models import BACKBONES
 
 from ..convnext import ConvNeXt
 
+# Register the modified model to MMDetection's registry with name 'ConvNeXt'
 @BACKBONES.register_module('ConvNeXt', force=True)
 class ConvNeXtDet(ConvNeXt):
     # Here, we modified the default value of ConvNeXt for detection tasks. You
-    # can alos do any modifications on the backbone.
+    # can also do any modifications on the backbone.
     # NOTICE: we don't recommend to use this method to modifiy the backbone.
     # And it's better to use the unified implementation.
     def __init__(self,

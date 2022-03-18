@@ -1,4 +1,4 @@
 from .convnext import ConvNeXt
-from .det.convnext_det import ConvNeXtDet
+from .det.layer_decay_optimizer_constructor import LearningRateDecayOptimizerConstructor
 
-__all__ = ['ConvNeXt', 'ConvNeXtDet']
+__all__ = ['ConvNeXt', 'LearningRateDecayOptimizerConstructor']
