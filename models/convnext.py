@@ -1,17 +1,16 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-# ---------------------------------------- 
+# ----------------------------------------
 # This file is an example of backbone. It's an simplified implementation
 # of ConvNeXt modified from MMClassification.
-# ---------------------------------------- 
+# ----------------------------------------
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from mmcv.cnn.bricks import DropPath
-from mmcv.runner.base_module import ModuleList, Sequential
+from mmcv.runner import ModuleList, Sequential, BaseModule
 
 from mmcls.models import BACKBONES
-from mmcls.models.backbones.base_backbone import BaseBackbone
 
 
 class LayerNorm2d(nn.LayerNorm):
@@ -29,15 +28,16 @@ class LayerNorm2d(nn.LayerNorm):
             self.bias, self.eps).permute(0, 3, 1, 2)
 
 
-class ConvNeXtBlock(nn.Module):
+class ConvNeXtBlock(BaseModule):
     """ConvNeXt Block."""
 
     def __init__(self,
                  in_channels,
                  mlp_ratio=4.,
                  drop_path_rate=0.,
-                 layer_scale_init_value=1e-6):
-        super().__init__()
+                 layer_scale_init_value=1e-6,
+                 init_cfg=None):
+        super().__init__(init_cfg=init_cfg)
         self.depthwise_conv = nn.Conv2d(
             in_channels,
             in_channels,
@@ -81,7 +81,7 @@ class ConvNeXtBlock(nn.Module):
 
 
 @BACKBONES.register_module(force=True)  # force to override class with the same name.
-class ConvNeXt(BaseBackbone):
+class ConvNeXt(BaseModule):
     """ConvNeXt.
 
     A PyTorch implementation of : `A ConvNet for the 2020s
