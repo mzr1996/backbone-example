@@ -1,5 +1,7 @@
 # Backbone example on OpenMMLab framework
 
+English | [简体中文](/README_zh-CN.md)
+
 ## Introduction
 
 This is an template repo about how to use OpenMMLab framework to develop a new backbone.
@@ -59,7 +61,7 @@ you can organize your dataset according to this [tutorial](https://mmsegmentatio
 
 In this example repository, we use the ConvNeXt as an example to show how to implement a backbone quickly.
 
-1. Create a file and put it in the `models` folder. In this example, [`models/convnext.py`](models/convnext.py).
+1. Create your backbone file and put it in the `models` folder. In this example, [`models/convnext.py`](models/convnext.py).
 
    In this file, just implement your backbone with PyTorch with two modifications:
 
@@ -67,12 +69,16 @@ In this example repository, we use the ConvNeXt as an example to show how to imp
       `BaseModule` is almost the same as the `torch.nn.Module`, and supports using
       `init_cfg` to specify the initizalization method includes pre-trained model.
 
-   2. Register the backbone class to the `mmcls.models.BACKBONES` registry.
+   2. Use one-line decorator as below to register the backbone class to the `mmcls.models.BACKBONES` registry.
+      ```python
+      @BACKBONES.register_module(force=True)
+      ```
+      > :question: What is registry? Have a look at [here](https://mmcv.readthedocs.io/en/latest/understand_mmcv/registry.html)!
 
-   3. [Optional] If you want to add some extra components for specific task, you
-      can also add it refers to [`models/det/layer_decay_optimizer_constructor.py`](models/det/layer_decay_optimizer_constructor.py).
+2. **[Optional]** If you want to add some extra components for specific task, you
+   can also add it refers to [`models/det/layer_decay_optimizer_constructor.py`](models/det/layer_decay_optimizer_constructor.py).
 
-2. Add these modules to [`models/__init__.py`](models/__init__.py).
+3. Add your backbone class and custom components to [`models/__init__.py`](models/__init__.py).
 
 ### Create config files
 
@@ -80,8 +86,11 @@ Add your config files for each task to [`configs/`](./configs). If your are not 
 the [tutorial](https://mmclassification.readthedocs.io/en/latest/tutorials/config.html#config-file-structure) can help you.
 
 In a word, use base config files of model, dataset, schedule and runtime to
-compose your config files. In this template, we provide a suit of popular sub
-config files, you can also find more useful base configs from [mmcls](https://github.com/open-mmlab/mmclassification/tree/master/configs/_base_),
+compose your config files. Of course, you can also override some settings of
+base config in your config files, even write all settings in one file.
+
+In this template, we provide a suit of popular base config files, you can also
+find more useful base configs from [mmcls](https://github.com/open-mmlab/mmclassification/tree/master/configs/_base_),
 [mmdet](https://github.com/open-mmlab/mmdetection/tree/master/configs/_base_) and
 [mmseg](https://github.com/open-mmlab/mmsegmentation/tree/master/configs/_base_).
 
