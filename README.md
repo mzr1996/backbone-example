@@ -49,7 +49,9 @@ data/
 
 Here, we only list the minimal files for training and validation on ImageNet (classification), ADE20K (segmentation) and COCO (object detection).
 
-If you want benchmark on more datasets or tasks, for example, panoptic segmentation with MMDetection, just organize your dataset according to MMDetection's requirements.
+If you want benchmark on more datasets or tasks, for example, panoptic segmentation with MMDetection,
+just organize your dataset according to MMDetection's requirements. For semantic segmentation task,
+you can organize your dataset according to this [tutorial](https://mmsegmentation.readthedocs.io/en/latest/dataset_prepare.html)
 
 ## Usage
 
@@ -97,22 +99,22 @@ export PYTHONPATH=`pwd`:$PYTHONPATH
 
 ```bash
 # train classification models
-min train mmcls $CONFIG --work-dir $WORK_DIR
+mim train mmcls $CONFIG --work-dir $WORK_DIR
 
 # test classification models
-min test mmcls $CONFIG -C $CHECKPOINT --metrics accuracy --metric-options "topk=(1, 5)"
+mim test mmcls $CONFIG -C $CHECKPOINT --metrics accuracy --metric-options "topk=(1, 5)"
 
 # train object detection / instance segmentation models
-min train mmdet $CONFIG --work-dir $WORK_DIR
+mim train mmdet $CONFIG --work-dir $WORK_DIR
 
 # test object detection / instance segmentation models
-min test mmdet $CONFIG -C $CHECKPOINT --eval bbox segm
+mim test mmdet $CONFIG -C $CHECKPOINT --eval bbox segm
 
 # train semantic segmentation models
-min train mmseg $CONFIG --work-dir $WORK_DIR
+mim train mmseg $CONFIG --work-dir $WORK_DIR
 
 # test semantic segmentation models
-min test mmseg $CONFIG -C $CHECKPOINT --eval mIoU
+mim test mmseg $CONFIG -C $CHECKPOINT --eval mIoU
 ```
 
 - CONFIG: the config files under the directory `configs/`
@@ -123,22 +125,22 @@ min test mmseg $CONFIG -C $CHECKPOINT --eval mIoU
 
 ```bash
 # train classification models
-min train mmcls $CONFIG --work-dir $WORK_DIR --launcher pytorch --gpus 4
+mim train mmcls $CONFIG --work-dir $WORK_DIR --launcher pytorch --gpus 4
 
 # test classification models
-min test mmcls $CONFIG -C $CHECKPOINT --metrics accuracy --metric-options "topk=(1, 5)" --launcher pytorch --gpus 4
+mim test mmcls $CONFIG -C $CHECKPOINT --metrics accuracy --metric-options "topk=(1, 5)" --launcher pytorch --gpus 4
 
 # train object detection / instance segmentation models
-min train mmdet $CONFIG --work-dir $WORK_DIR --launcher pytorch --gpus 4
+mim train mmdet $CONFIG --work-dir $WORK_DIR --launcher pytorch --gpus 4
 
 # test object detection / instance segmentation models
-min test mmdet $CONFIG -C $CHECKPOINT --eval bbox segm --launcher pytorch --gpus 4
+mim test mmdet $CONFIG -C $CHECKPOINT --eval bbox segm --launcher pytorch --gpus 4
 
 # train semantic segmentation models
-min train mmseg $CONFIG --work-dir $WORK_DIR --launcher pytorch --gpus 4 
+mim train mmseg $CONFIG --work-dir $WORK_DIR --launcher pytorch --gpus 4 
 
 # test semantic segmentation models
-min test mmseg $CONFIG -C $CHECKPOINT --eval mIoU --launcher pytorch --gpus 4
+mim test mmseg $CONFIG -C $CHECKPOINT --eval mIoU --launcher pytorch --gpus 4
 ```
 
 - CONFIG: the config files under the directory `configs/`
@@ -149,22 +151,22 @@ min test mmseg $CONFIG -C $CHECKPOINT --eval mIoU --launcher pytorch --gpus 4
 
 ```bash
 # train classification models
-min train mmcls $CONFIG --work-dir $WORK_DIR --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
+mim train mmcls $CONFIG --work-dir $WORK_DIR --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
 
 # test classification models
-min test mmcls $CONFIG -C $CHECKPOINT --metrics accuracy --metric-options "topk=(1, 5)" --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
+mim test mmcls $CONFIG -C $CHECKPOINT --metrics accuracy --metric-options "topk=(1, 5)" --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
 
 # train object detection / instance segmentation models
-min train mmdet $CONFIG --work-dir $WORK_DIR --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
+mim train mmdet $CONFIG --work-dir $WORK_DIR --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
 
 # test object detection / instance segmentation models
-min test mmdet $CONFIG -C $CHECKPOINT --eval bbox segm --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
+mim test mmdet $CONFIG -C $CHECKPOINT --eval bbox segm --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
 
 # train semantic segmentation models
-min train mmseg $CONFIG --work-dir $WORK_DIR --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
+mim train mmseg $CONFIG --work-dir $WORK_DIR --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
 
 # test semantic segmentation models
-min test mmseg $CONFIG -C $CHECKPOINT --eval mIoU --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
+mim test mmseg $CONFIG -C $CHECKPOINT --eval mIoU --launcher slurm --gpus 16 --gpus-per-node 8 --partition $PARTITION
 ```
 
 - CONFIG: the config files under the directory `configs/`
