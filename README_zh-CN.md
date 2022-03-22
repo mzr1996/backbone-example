@@ -4,7 +4,7 @@
 
 ## 简介
 
-这是一个关于如何使用 OpenMMLab 框架开发一个跨任务主干网络的模板库。
+这是一个关于如何使用 OpenMMLab 框架开发一个适用于多种视觉任务主干网络的模板库。
 
 利用 OpenMMLab 框架，我们可以轻松地开发一个新的主干网络，并利用 MMClassification，MMDetection 和 MMSegmentation 来在分类、检测和分割等任务上进行基准测试。
 

@@ -4,7 +4,7 @@ English | [简体中文](/README_zh-CN.md)
 
 ## Introduction
 
-This is an template repo about how to use OpenMMLab framework to develop a new backbone.
+This is an template repo about how to use OpenMMLab framework to develop a new backbone for multiple vision tasks.
 
 With OpenMMLab framework, you can easily develop a new backbone and use MMClassification, MMDetection and MMSegmentation to benchmark your backbone on classification, detection and segmentation tasks.
 
