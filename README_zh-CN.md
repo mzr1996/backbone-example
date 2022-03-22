@@ -16,7 +16,7 @@
 - [MMCV](https://github.com/open-mmlab/mmcv): OpenMMLab 计算机视觉基础库
 - [MMClassification](https://github.com/open-mmlab/mmclassification): OpenMMLab 图像分类工具箱和基准测试。除了分类任务，它同时用于提供多样的主干网络
 - [MMDetection](https://github.com/open-mmlab/mmdetection): OpenMMLab 检测工具箱和基准测试
-- [MMSegmentation](https://github.com/open-mmlab/mmsegmentation): OpenMMLab 语义分割同居想和基准测试
+- [MMSegmentation](https://github.com/open-mmlab/mmsegmentation): OpenMMLab 语义分割工具箱和基准测试
 
 假设你已经准备好了 Python 和 PyTorch 环境，那么只需要下面两行命令，就可以配置好软件环境。
 
@@ -52,7 +52,7 @@ data/
 这里，我们只列举了用于训练和验证 ImageNet（分类任务）、ADE20K（分割任务）和 COCO（检测任务）的必要文件。
 
 如果你希望在更多数据集或任务上进行基准测试，比如使用 MMDetection 进行全景分割，只需要按照 MMDetection 
-的需要组织对应的数据集即可。对于语义分割任务，也可以参照这篇教程[组织]((https://mmsegmentation.readthedocs.io/zh_CN/latest/dataset_prepare.html))数据集。
+的需要组织对应的数据集即可。对于语义分割任务，也可以参照这篇[教程](https://mmsegmentation.readthedocs.io/zh_CN/latest/dataset_prepare.html)组织数据集。
 
 ## 用法
 
